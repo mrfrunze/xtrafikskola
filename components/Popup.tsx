@@ -2,7 +2,7 @@
 
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { useForm } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
@@ -34,7 +34,7 @@ const Popup = ({ isOpen, onClose }: PopupProps) => {
         resolver: zodResolver(formSchema),
     });
 
-    const onSubmit = async (data: FormData) => {
+    const onSubmit: SubmitHandler<FormData> = async (data) => {
         try {
             await axios.post("/api/send-email", data);
             toast({
