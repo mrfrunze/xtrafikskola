@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-    darkMode: ["class"],
+    darkMode: "class",
     content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,6 +9,25 @@ const config: Config = {
   ],
   theme: {
   	extend: {
+		keyframes: {
+			"fade-in": {
+				"0%": { opacity: "0" },
+				"100%": { opacity: "1" },
+			},
+			"fade-out": {
+				"0%": { opacity: "1" },
+				"100%": { opacity: "0" },
+			},
+			"slide-in-from-top": {
+				"0%": { transform: "translateY(-50%)", opacity: "0" },
+				"100%": { transform: "translateY(0)", opacity: "1" },
+			},
+		},
+		animation: {
+			"fade-in-50": "fade-in 0.5s ease-out",
+			"fade-out-50": "fade-out 0.5s ease-in",
+			"slide-in-from-top-10": "slide-in-from-top 0.5s ease-out",
+		},
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',

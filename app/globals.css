@@ -66,6 +66,10 @@ body {
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
+
+  .dark, :root {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
 }
 
 @layer base {
@@ -76,3 +80,5 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+

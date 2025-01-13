@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
+import { useToast } from "@/hooks/use-toast";
 
 // Схема валидации через Zod
 const formSchema = z.object({
@@ -21,6 +22,7 @@ interface PopupProps {
 }
 
 const Popup = ({ isOpen, onClose }: PopupProps) => {
+    const { toast } = useToast();
     const {
         register,
         handleSubmit,
@@ -33,12 +35,19 @@ const Popup = ({ isOpen, onClose }: PopupProps) => {
     const onSubmit = async (data: any) => {
         try {
             await axios.post("/api/send-email", data);
-            alert("Formuläret skickades!");
+            toast({
+                title: "✅ Formuläret har skickats!",
+                description: "Ditt meddelande har skickats framgångsrikt.",
+            });
             reset();
             onClose();
         } catch (error) {
             console.error("Error:", error);
-            alert("Ett fel uppstod vid skickandet av formuläret.");
+            toast({
+                title: "❌ Fel vid skickande",
+                description: "Något gick fel, försök igen senare.",
+                variant: "destructive",
+            });
         }
     };
 

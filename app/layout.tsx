@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header";
+import { Toaster } from "@/components/ui/toaster"
+import { ThemeSwitcher } from "@/components/ThemeSwitcher";
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,7 +33,11 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Header />
+        <div className="fixed top-1/2 right-0 transform -translate-y-1/2 z-50">
+            <ThemeSwitcher />
+        </div>
         <main className="pt-[80px]">{children}</main>
+        <Toaster />
       </body>
     </html>
   );

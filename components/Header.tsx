@@ -5,10 +5,17 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import Image from "next/image";
 import Popup from "@/components/Popup";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Header = () => {
     const [isPopupOpen, setIsPopupOpen] = useState(false);
+    const [theme, setTheme] = useState<string | null>(null);
+
+    useEffect(() => {
+        const storedTheme = localStorage.getItem("theme") || "light";
+        setTheme(storedTheme);
+        document.documentElement.classList.add(storedTheme);
+    }, []);
 
     return (
         <header className="fixed top-0 left-0 w-full bg-background text-foreground shadow-md z-50">
@@ -16,7 +23,11 @@ const Header = () => {
                 
                 {/* Логотип */}
                 <Link href="/" className="text-2xl font-bold">
-                    <Image src="/logo.webp" alt="xTrafikSkola" width={300} height={60} />
+                    {theme === "dark" ? (
+                        <Image src="/logo.webp" alt="xTrafikSkola" width={300} height={60} />
+                    ):(
+                        <Image src="/logo-darkened.png" alt="xTrafikSkola" width={300} height={60} />
+                    )}
                 </Link>
 
                 {/* Навигация для десктопа */}

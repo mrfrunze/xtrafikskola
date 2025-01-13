@@ -18,7 +18,7 @@ export async function POST(request: Request) {
         // Отправка письма
         await transporter.sendMail({
             from: `"xTrafikSkola" <${process.env.EMAIL_USER}>`,
-            to: "your-email@example.com", // Укажи свою почту для тестирования
+            to: "stoynov.oleg@gmail.com", // Укажи свою почту для тестирования
             subject: "Ny bokning från xTrafikSkola",
             text: `Namn: ${name}\nTelefon: ${phone}\nEmail: ${email}\nKommentar: ${comment}`,
         });
