@@ -62,13 +62,13 @@ const Popup = ({ isOpen, onClose }: PopupProps) => {
 
                 <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
                     <input {...register("name")} placeholder="Ditt namn" className="p-2 border rounded-md" />
-                    {errors.name && <p className="text-red-500">{errors.name.message}</p>}
+                    {errors.name?.message && <p className="text-red-500">{String(errors.name.message)}</p>}
 
                     <input {...register("phone")} placeholder="Ditt telefonnummer" className="p-2 border rounded-md" />
-                    {errors.phone && <p className="text-red-500">{errors.phone.message}</p>}
+                    {errors.phone?.message && <p className="text-red-500">{String(errors.phone.message)}</p>}
 
                     <input {...register("email")} placeholder="Din e-postadress" className="p-2 border rounded-md" />
-                    {errors.email && <p className="text-red-500">{errors.email.message}</p>}
+                    {errors.email?.message && <p className="text-red-500">{String(errors.email.message)}</p>}
 
                     <textarea {...register("comment")} placeholder="Kommentar (valfritt)" className="p-2 border rounded-md" />
 
