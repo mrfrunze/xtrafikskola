@@ -1,6 +1,6 @@
 "use client";
 
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -15,6 +15,8 @@ const formSchema = z.object({
     email: z.string().email("Ogiltig e-postadress."),
     comment: z.string().optional(),
 });
+
+type FormData = z.infer<typeof formSchema>;
 
 interface PopupProps {
     isOpen: boolean;
@@ -32,7 +34,7 @@ const Popup = ({ isOpen, onClose }: PopupProps) => {
         resolver: zodResolver(formSchema),
     });
 
-    const onSubmit = async (data: any) => {
+    const onSubmit = async (data: FormData) => {
         try {
             await axios.post("/api/send-email", data);
             toast({
