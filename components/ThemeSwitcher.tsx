@@ -26,7 +26,11 @@ export const ThemeSwitcher = () => {
 
     return (
         <button
-        className="flex items-center gap-2 p-2 border rounded-lg text-sm font-medium hover:bg-gray-200 dark:hover:bg-gray-700"
+        className="flex items-center gap-2 p-2 border rounded-lg text-sm font-medium 
+    bg-card text-card-foreground 
+    hover:bg-accent hover:text-accent-foreground
+    dark:hover:bg-accent dark:hover:text-accent-foreground
+    transition duration-300"
         onClick={toggleTheme}
         >
             {theme === "light" ? <FiSun size={20} /> : <FiMoon size={20} />}

@@ -5,7 +5,7 @@ export default function Home() {
     <div>
       <Hero/>
       <About/>
-      <Services/>
+      {/* <Services/> */}
       <Contact/>
     </div>
   );
