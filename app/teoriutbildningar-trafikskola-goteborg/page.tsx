@@ -1,12 +1,14 @@
 import Script from "next/script";
+import Teoriutbildningar from "../../components/Teoriutbildningar";
 
 export const metadata = {
-  title: "Teoriutbildningar Trafikskola Göteborg - xTrafikskola",
+  title: "Teoriutbildningar Trafikskola Göteborg | xTrafikskola",
   description:
     "Lär dig teori för körkort på xTrafikskola i Göteborg. Vi erbjuder teorikurser för bil, truck och taxi.",
 };
 
 export default function TheoryPage() {
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Course",
@@ -54,12 +56,7 @@ export default function TheoryPage() {
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <main className="min-h-screen flex flex-col items-center justify-center">
-        <h1 className="text-4xl font-bold">Teoriutbildningar</h1>
-        <p>
-          Här kan du lära dig teorin för körkort och förbereda dig inför provet.
-        </p>
-      </main>
+      <Teoriutbildningar/>
     </>
   );
 }
